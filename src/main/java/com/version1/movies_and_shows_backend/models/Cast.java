@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 
 @Entity
-@IdClass(CastPK.class)
+@IdClass(CastPK.class) // Composite PK
 public class Cast {
 
     @Id
