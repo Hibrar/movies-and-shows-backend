@@ -1,0 +1,177 @@
+package com.version1.movies_and_shows_backend.models;
+
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
+@Table(name="media")
+public class Media {
+
+    @Id
+    public String id;
+    @Column
+    public String title;
+    @Column
+    public String type;
+    @Column
+    public String description;
+    @Column
+    public int releaseYear;
+    @Column
+    public String ageCert;
+    @Column
+    public int runtime;
+    @Column
+    @OneToMany
+    public List<Genre> genres;
+    @Column
+    @OneToMany
+    public List<ProductionCountry> productionCountries;
+    @Column
+    public int seasons;
+    @Column
+    public String imdbId;
+    @Column
+    public double imdbScore;
+    @Column
+    public int imdbVotes;
+    @Column
+    public double tmdbPopularity;
+    @Column
+    public double tmdbScore;
+    @Column
+    @OneToMany
+    public List<Site> sites;
+
+    public Media() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public String getAgeCert() {
+        return ageCert;
+    }
+
+    public void setAgeCert(String ageCert) {
+        this.ageCert = ageCert;
+    }
+
+    public int getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(int runtime) {
+        this.runtime = runtime;
+    }
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
+
+    public List<ProductionCountry> getProductionCountries() {
+        return productionCountries;
+    }
+
+    public void setProductionCountries(List<ProductionCountry> productionCountries) {
+        this.productionCountries = productionCountries;
+    }
+
+    public int getSeasons() {
+        return seasons;
+    }
+
+    public void setSeasons(int seasons) {
+        this.seasons = seasons;
+    }
+
+    public String getImdbId() {
+        return imdbId;
+    }
+
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
+    }
+
+    public double getImdbScore() {
+        return imdbScore;
+    }
+
+    public void setImdbScore(double imdbScore) {
+        this.imdbScore = imdbScore;
+    }
+
+    public int getImdbVotes() {
+        return imdbVotes;
+    }
+
+    public void setImdbVotes(int imdbVotes) {
+        this.imdbVotes = imdbVotes;
+    }
+
+    public double getTmdbPopularity() {
+        return tmdbPopularity;
+    }
+
+    public void setTmdbPopularity(double tmdbPopularity) {
+        this.tmdbPopularity = tmdbPopularity;
+    }
+
+    public double getTmdbScore() {
+        return tmdbScore;
+    }
+
+    public void setTmdbScore(double tmdbScore) {
+        this.tmdbScore = tmdbScore;
+    }
+
+    public List<Site> getSites() {
+        return sites;
+    }
+
+    public void setSites(List<Site> sites) {
+        this.sites = sites;
+    }
+}
