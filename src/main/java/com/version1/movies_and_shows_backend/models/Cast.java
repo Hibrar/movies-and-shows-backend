@@ -4,17 +4,21 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="media_cast")
-@IdClass(CastPK.class) // Composite PK
 public class Cast {
 
-    @Id
-    private int personId;
-    @Id
-    private String mediaId;
+    @EmbeddedId
+    private CastId id;
 
-    @Column
+    @ManyToOne
+    @MapsId("mediaId")
+    @JoinColumn(name = "media_id")
+    private Media media;
+
+    @ManyToOne
+    @MapsId("personId")
+    @JoinColumn(name = "person_id")
+    private Person person;
+
     private String character;
-
-    @Column
     private String role;
 }

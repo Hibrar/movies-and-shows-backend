@@ -3,14 +3,20 @@ package com.version1.movies_and_shows_backend.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Person {
     @Id
-    public int id;
+    private int id;
 
     @Column
-    public String name;
+    private String name;
+
+    @OneToMany(mappedBy = "person")
+    private List<Cast> appearances;
 
     public Person() {
     }
@@ -29,5 +35,13 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Cast> getAppearances() {
+        return appearances;
+    }
+
+    public void setAppearances(List<Cast> appearances) {
+        this.appearances = appearances;
     }
 }

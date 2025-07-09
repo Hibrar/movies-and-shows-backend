@@ -9,45 +9,48 @@ import java.util.List;
 public class Media {
 
     @Id
-    public String id;
+    private String id;
     @Column
-    public String title;
+    private String title;
     @Column
-    public String type;
+    private String type;
     @Column
-    public String description;
+    private String description;
     @Column
-    public int releaseYear;
+    private int releaseYear;
     @Column
-    public String ageCert;
+    private String ageCert;
     @Column
-    public int runtime;
-    @Column
-    @OneToMany
-    public List<Genre> genres;
+    private int runtime;
     @Column
     @OneToMany
-    public List<ProductionCountry> productionCountries;
-    @Column
-    public int seasons;
-    @Column
-    public String imdbId;
-    @Column
-    public double imdbScore;
-    @Column
-    public int imdbVotes;
-    @Column
-    public double tmdbPopularity;
-    @Column
-    public double tmdbScore;
+    private List<Genre> genres;
     @Column
     @OneToMany
-    public List<Site> sites;
+    private List<ProductionCountry> productionCountries;
+    @Column
+    private int seasons;
+    @Column
+    private String imdbId;
+    @Column
+    private double imdbScore;
+    @Column
+    private int imdbVotes;
+    @Column
+    private double tmdbPopularity;
+    @Column
+    private double tmdbScore;
+    @Column
+    @OneToMany
+    private List<Site> sites;
+    @Column
+    @OneToMany(mappedBy = "media")
+    private List<Cast> cast;
 
     public Media() {
     }
 
-    public Media(String id, String title, String type, String description, int releaseYear, String ageCert, int runtime, List<Genre> genres, List<ProductionCountry> productionCountries, int seasons, String imdbId, double imdbScore, int imdbVotes, double tmdbPopularity, double tmdbScore, List<Site> sites) {
+    public Media(String id, String title, String type, String description, int releaseYear, String ageCert, int runtime, List<Genre> genres, List<ProductionCountry> productionCountries, int seasons, String imdbId, double imdbScore, int imdbVotes, double tmdbPopularity, double tmdbScore, List<Site> sites, List<Cast> cast) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -64,7 +67,10 @@ public class Media {
         this.tmdbPopularity = tmdbPopularity;
         this.tmdbScore = tmdbScore;
         this.sites = sites;
+        this.cast = cast;
     }
+
+
 
     public String getId() {
         return id;
@@ -192,5 +198,13 @@ public class Media {
 
     public void setSites(List<Site> sites) {
         this.sites = sites;
+    }
+
+    public List<Cast> getCast() {
+        return cast;
+    }
+
+    public void setCast(List<Cast> cast) {
+        this.cast = cast;
     }
 }
