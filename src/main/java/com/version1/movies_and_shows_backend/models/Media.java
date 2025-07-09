@@ -47,6 +47,25 @@ public class Media {
     public Media() {
     }
 
+    public Media(String id, String title, String type, String description, int releaseYear, String ageCert, int runtime, List<Genre> genres, List<ProductionCountry> productionCountries, int seasons, String imdbId, double imdbScore, int imdbVotes, double tmdbPopularity, double tmdbScore, List<Site> sites) {
+        this.id = id;
+        this.title = title;
+        this.type = type;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.ageCert = ageCert;
+        this.runtime = runtime;
+        this.genres = genres;
+        this.productionCountries = productionCountries;
+        this.seasons = seasons;
+        this.imdbId = imdbId;
+        this.imdbScore = imdbScore;
+        this.imdbVotes = imdbVotes;
+        this.tmdbPopularity = tmdbPopularity;
+        this.tmdbScore = tmdbScore;
+        this.sites = sites;
+    }
+
     public String getId() {
         return id;
     }
