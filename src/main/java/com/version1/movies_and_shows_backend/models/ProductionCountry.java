@@ -15,6 +15,11 @@ public class ProductionCountry {
     public ProductionCountry() {
     }
 
+    public ProductionCountry(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
