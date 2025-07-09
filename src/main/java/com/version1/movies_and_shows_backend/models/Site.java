@@ -8,10 +8,10 @@ public class Site {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
 
     @Column
-    public String name;
+    private String name;
 
     public Site() {
     }
