@@ -23,12 +23,15 @@ public class Cast {
     private String character;
     private String role;
 
-    public CastId getId() {
-        return id;
+    public Cast(Media media, Person person, String character, String role, int personId, String mediaId) {
+        this.media = media;
+        this.person = person;
+        this.character = character;
+        this.role = role;
+        this.id= new CastId(personId,mediaId);
     }
 
-    public void setId(CastId id) {
-        this.id = id;
+    public Cast() {
     }
 
     public Media getMedia() {
@@ -62,4 +65,13 @@ public class Cast {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public CastId getId() {
+        return id;
+    }
+
+    public void setId(CastId id) {
+        this.id = id;
+    }
+
 }

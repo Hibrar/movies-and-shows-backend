@@ -53,7 +53,8 @@ public class Media {
     public Media() {
     }
 
-    public Media(String id, String title, String type, String description, int releaseYear, String ageCert, int runtime, List<Genre> genres, List<ProductionCountry> productionCountries, int seasons, String imdbId, double imdbScore, double imdbVotes, double tmdbPopularity, double tmdbScore, List<Site> sites) {
+
+    public Media(String id, String title, String type, String description, int releaseYear, String ageCert, int runtime, List<Genre> genres, List<ProductionCountry> productionCountries, int seasons, String imdbId, double imdbScore, int imdbVotes, double tmdbPopularity, double tmdbScore, List<Site> sites) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -70,7 +71,7 @@ public class Media {
         this.tmdbPopularity = tmdbPopularity;
         this.tmdbScore = tmdbScore;
         this.sites = sites;
-        this.cast = new ArrayList<>();
+        this.cast= new ArrayList<>();
     }
 
 

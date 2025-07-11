@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,6 +21,13 @@ public class Person {
 
     public Person() {
     }
+
+    public Person(int id, String name){
+        this.id=id;
+        this.name=name;
+        this.appearances=new ArrayList<>();
+    }
+
 
     public int getId() {
         return id;

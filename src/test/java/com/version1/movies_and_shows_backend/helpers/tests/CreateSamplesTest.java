@@ -1,10 +1,7 @@
 package com.version1.movies_and_shows_backend.helpers.tests;
 
 import com.version1.movies_and_shows_backend.helpers.CreateSamples;
-import com.version1.movies_and_shows_backend.models.Genre;
-import com.version1.movies_and_shows_backend.models.Media;
-import com.version1.movies_and_shows_backend.models.ProductionCountry;
-import com.version1.movies_and_shows_backend.models.Site;
+import com.version1.movies_and_shows_backend.models.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -44,5 +41,32 @@ public class CreateSamplesTest {
         List<Site> sites = media.getSites();
         assertEquals(1, sites.size());
         assertEquals("Apple", sites.getFirst().getName());
+    }
+    @Test
+    public void createSamplePerson(){
+        Person person = CreateSamples.person();
+
+        assertNotNull(person);
+        assertEquals(1,person.getId());
+        assertEquals("Peter Robbins", person.getName());
+    }
+
+    @Test
+    public void createSampleCast(){
+        // cast needs media to be able to be created, im unsure if this is the safest way to do it
+        Media media = CreateSamples.media("tm1300");
+        Person person = CreateSamples.person();
+        Cast cast = CreateSamples.cast(media, person);
+
+        assertNotNull(cast);
+        // id
+        assertEquals(media, cast.getMedia());
+        assertEquals(person,cast.getPerson());
+        assertEquals("Charlie Brown", cast.getCharacter());
+        assertEquals("Actor", cast.getRole());
+        assertEquals(person.getId(),cast.getPerson().getId());
+        assertEquals(media.getId(), cast.getMedia().getId());
+
+
     }
 }
