@@ -10,9 +10,9 @@ import java.util.Optional;
 
 @Repository
 public interface MediaRepository extends JpaRepository<Media, String> {
-    List<Media> findByGenre(String genre);
+    List<Media> findByGenres_NameIgnoreCase(String name);
 
-    List<Media> findBySite(String site);
+    List<Media> findBySites_NameIgnoreCase(String name);
 
     Optional<Media> findByTitle(String title);
 
