@@ -5,6 +5,8 @@ import com.version1.movies_and_shows_backend.repositories.MediaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MediaService {
 
@@ -15,11 +17,19 @@ public class MediaService {
         return mediaRepository.findById(id).orElse(null);
     }
 
-    //getAll
-        //getByGenre
-        //getBySite
+    public List<Media> getAllMedia() { return mediaRepository.findAll();}
 
-    //getByName
+    public List<Media> getByGenre(String genre) { return mediaRepository.findByGenre(genre);}
+
+    public List<Media> getBySite(String site) { return mediaRepository.findBySite(site);}
+
+    public Media getByName(String name) { return mediaRepository.findByName(name).orElse(null);}
+
+    // getByType
+    // getByYear
+    // getByAgeCert
+
+    // probably going to need some custom queries, get by year > 1970
 
     //save...
 

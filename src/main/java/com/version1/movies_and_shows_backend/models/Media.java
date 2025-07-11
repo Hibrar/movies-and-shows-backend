@@ -2,6 +2,7 @@ package com.version1.movies_and_shows_backend.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -50,7 +51,7 @@ public class Media {
     public Media() {
     }
 
-    public Media(String id, String title, String type, String description, int releaseYear, String ageCert, int runtime, List<Genre> genres, List<ProductionCountry> productionCountries, int seasons, String imdbId, double imdbScore, int imdbVotes, double tmdbPopularity, double tmdbScore, List<Site> sites, List<Cast> cast) {
+    public Media(String id, String title, String type, String description, int releaseYear, String ageCert, int runtime, List<Genre> genres, List<ProductionCountry> productionCountries, int seasons, String imdbId, double imdbScore, int imdbVotes, double tmdbPopularity, double tmdbScore, List<Site> sites) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -67,7 +68,7 @@ public class Media {
         this.tmdbPopularity = tmdbPopularity;
         this.tmdbScore = tmdbScore;
         this.sites = sites;
-        this.cast = cast;
+        this.cast= new ArrayList<>();
     }
 
 
