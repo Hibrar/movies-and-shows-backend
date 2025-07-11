@@ -23,7 +23,9 @@ public class MediaService {
 
     public List<Media> getBySite(String site) { return mediaRepository.findBySites_NameIgnoreCase(site);}
 
+
     public Media getByTitle(String title) { return mediaRepository.findByTitle(title).orElse(null);}
+
 
     // getByType
     // getByYear

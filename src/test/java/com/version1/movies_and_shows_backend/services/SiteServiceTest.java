@@ -24,7 +24,7 @@ public class SiteServiceTest {
     @InjectMocks
     private SiteService siteService;
 
-    private List<Site> sites = CreateSamples.sites();
+    final List<Site> sites = CreateSamples.sites();
 
     @Test
     public void getAllSitesTest()

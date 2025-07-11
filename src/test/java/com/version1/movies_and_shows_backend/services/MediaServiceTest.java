@@ -26,14 +26,14 @@ public class MediaServiceTest {
     @InjectMocks
     private MediaService mediaService;
 
-    public String id = "tm1300";
-    public Media media = CreateSamples.media(id);
+
+    final Media media = CreateSamples.media().getFirst();
     @Test
     public void getMediaByIdTest() {
 
-        when(mediaRepository.findById(id)).thenReturn(Optional.of(media));
+        when(mediaRepository.findById("tm1300")).thenReturn(Optional.of(media));
 
-        Media result = mediaService.getMediaById(id);
+        Media result = mediaService.getMediaById("tm1300");
         assertEquals(result, media);
 
     }
