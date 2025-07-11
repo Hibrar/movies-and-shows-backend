@@ -39,43 +39,54 @@ public class CSVToModel {
     public static List<Cast> cast;
 
 
-    // needs to void, needs to check if already exists in genre, if not it adds
-    public static List<Genre> extractGenres(String row) {
+    public static List<Genre> extractGenres(String[] row) {
         List<Genre> genres = new ArrayList<>();
-        int genreStart = row.indexOf("[");
-        int genreEnd = row.indexOf("]", genreStart);
-        if (genreStart != -1 && genreEnd != -1) {
-
-            String genreField = row.substring(genreStart + 1, genreEnd);
-            // Remove quotes and split by comma
-            String[] genreArray = genreField.split(",");
-
+            String rawString = row[7];
+            String[] genreArray = rawString.replaceAll("[\\[\\]]", "").split(",");
             for (String genre:genreArray) {
                 String cleanGenre = genre.trim().replaceAll("['\"]", "");
                 if(!cleanGenre.isEmpty()) {
                     genres.add(new Genre(cleanGenre));
                 }
             }
-        }
+
         return genres;
     }
 
 
-    public static void productionCountries(String row){
-        // loops through row, checks if already in pc list, if not
-        // adds to pc list
+    public static List<ProductionCountry> extractProductionCountries(String[] row){
+        List<ProductionCountry> productionCountries = new ArrayList<>();
+        String rawString = row[8];
+        String[] countriesArray = rawString.replaceAll("[\\[\\]]", "").split(",");
+        for (String country:countriesArray) {
+            String cleanString = country.trim().replaceAll("['\"]", "");
+            if(!cleanString.isEmpty()) {
+                productionCountries.add(new ProductionCountry(cleanString));
+            }
+        }
+
+        return productionCountries;
     }
 
     // maybe pass in which site it is as a variable so can add to media
-    public static void extractMedia(){
-        List<Media> media = new ArrayList<>();
-        // loop through each column
-        // switch case for row name
-        // non-list rows put straight into object
-        // list items compare names and then add the objects to the lists
-        // if site is in parameters then add
-
-        // adds to media list
+    public static Media extractMedia(String[] row){
+        Media media = new Media();
+        media.setId(row[0]);
+        media.setTitle(row[1]);
+        media.setType(row[2]);
+        media.setDescription(row[3]);
+        media.setReleaseYear(parseInteger(row[4]));
+        media.setAgeCert(row[5]);
+        media.setRuntime(parseInteger(row[6]));
+        // Skip genres (7) and production countries (8)
+        media.setSeasons(parseInteger(row[9]));
+        media.setImdbId(row[10]);
+        media.setImdbScore(parseDouble(row[11]));
+        media.setImdbVotes(parseDouble(row[12]));
+        media.setTmdbPopularity(parseDouble(row[13]));
+        media.setTmdbScore(parseDouble(row[14]));
+        media.setCast(new ArrayList<>());
+        return media;
     }
 
     public static void extractPerson(String row){
@@ -116,4 +127,21 @@ public class CSVToModel {
         // now would just need to add to the DB -> probably using its own method
 
     }
+
+    private static Integer parseInteger(String value) {
+        try {
+            return (value == null || value.isEmpty()) ? 0 : Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+
+    private static Double parseDouble(String value) {
+        try {
+            return (value == null || value.isEmpty()) ? 0.0  : Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            return 0.0;
+        }
+    }
+
 }

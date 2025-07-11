@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="media")
@@ -16,6 +17,7 @@ public class Media {
     @Column
     private String type;
     @Column
+    @Lob
     private String description;
     @Column
     private int releaseYear;
@@ -24,10 +26,10 @@ public class Media {
     @Column
     private int runtime;
     @Column
-    @OneToMany
+    @ManyToMany
     private List<Genre> genres;
     @Column
-    @OneToMany
+    @ManyToMany
     private List<ProductionCountry> productionCountries;
     @Column
     private int seasons;
@@ -36,13 +38,13 @@ public class Media {
     @Column
     private double imdbScore;
     @Column
-    private int imdbVotes;
+    private double imdbVotes;
     @Column
     private double tmdbPopularity;
     @Column
     private double tmdbScore;
     @Column
-    @OneToMany
+    @ManyToMany
     private List<Site> sites;
     @Column
     @OneToMany(mappedBy = "media")
@@ -50,6 +52,7 @@ public class Media {
 
     public Media() {
     }
+
 
     public Media(String id, String title, String type, String description, int releaseYear, String ageCert, int runtime, List<Genre> genres, List<ProductionCountry> productionCountries, int seasons, String imdbId, double imdbScore, int imdbVotes, double tmdbPopularity, double tmdbScore, List<Site> sites) {
         this.id = id;
@@ -169,11 +172,11 @@ public class Media {
         this.imdbScore = imdbScore;
     }
 
-    public int getImdbVotes() {
+    public double getImdbVotes() {
         return imdbVotes;
     }
 
-    public void setImdbVotes(int imdbVotes) {
+    public void setImdbVotes(double imdbVotes) {
         this.imdbVotes = imdbVotes;
     }
 
@@ -208,4 +211,28 @@ public class Media {
     public void setCast(List<Cast> cast) {
         this.cast = cast;
     }
+
+    @Override
+    public String toString() {
+        return "Media{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", type='" + type + '\'' +
+                ", description='" + description + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", ageCert='" + ageCert + '\'' +
+                ", runtime=" + runtime +
+                ", genres=" + genres.stream().map(Genre::getName).toList() +
+                ", productionCountries=" + productionCountries.stream().map(ProductionCountry::getName).toList() +
+                ", seasons=" + seasons +
+                ", imdbId='" + imdbId + '\'' +
+                ", imdbScore=" + imdbScore +
+                ", imdbVotes=" + imdbVotes +
+                ", tmdbPopularity=" + tmdbPopularity +
+                ", tmdbScore=" + tmdbScore +
+                ", sites=" + sites.stream().map(Site::getName).toList() +
+                ", cast=" + cast.stream().map(c -> c.getPerson().getName() + " as " + c.getCharacter() + " ( " + c.getRole() + " )").toList() +
+                '}';
+    }
+
 }
