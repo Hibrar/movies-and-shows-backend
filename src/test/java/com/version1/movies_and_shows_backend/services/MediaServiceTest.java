@@ -26,14 +26,14 @@ public class MediaServiceTest {
     @InjectMocks
     private MediaService mediaService;
 
-    final String id = "tm1300";
-    final Media media = CreateSamples.media(id);
+
+    final Media media = CreateSamples.media().getFirst();
     @Test
     public void getMediaByIdTest() {
 
-        when(mediaRepository.findById(id)).thenReturn(Optional.of(media));
+        when(mediaRepository.findById("tm1300")).thenReturn(Optional.of(media));
 
-        Media result = mediaService.getMediaById(id);
+        Media result = mediaService.getMediaById("tm1300");
         assertEquals(result, media);
 
     }
@@ -100,18 +100,18 @@ public class MediaServiceTest {
 
 
     @Test
-    public  void getByNameTest()
+    public  void getByTitleTest()
     {
-        when(mediaRepository.findByName("A Charlie Brown Christmas")).thenReturn(Optional.of(media));
+        when(mediaRepository.findByTitle("A Charlie Brown Christmas")).thenReturn(Optional.of(media));
 
-        Media result = mediaService.getByName("A Charlie Brown Christmas");
+        Media result = mediaService.getByTitle("A Charlie Brown Christmas");
         assertEquals(result, media);
     }
 
     @Test
-    public void getByNameNotFoundTest()
+    public void getByTitleNotFoundTest()
     {
-        Media result = mediaService.getByName("Boss Baby Back In Business");
+        Media result = mediaService.getByTitle("Boss Baby Back In Business");
         assertNull(result);
     }
 

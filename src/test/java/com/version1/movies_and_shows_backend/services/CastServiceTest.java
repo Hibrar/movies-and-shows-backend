@@ -29,7 +29,7 @@ public class CastServiceTest {
     private  CastService castService;
 
     final Person person = CreateSamples.person();
-    final Media media = CreateSamples.media("tm1300");
+    final Media media = CreateSamples.media().getFirst();
     final Cast cast = CreateSamples.cast(media,person);
     final CastId castId = new CastId(person.getId(),media.getId());
     final List<Cast> castList = List.of(cast);

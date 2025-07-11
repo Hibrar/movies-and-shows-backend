@@ -12,7 +12,7 @@ public class CreateSamplesTest {
     @Test
     public void createSampleMedia() {
         String mediaId = "tm1300";
-        Media media = CreateSamples.media(mediaId);
+        Media media = CreateSamples.media().getFirst();
 
         assertNotNull(media);
         assertEquals(mediaId, media.getId());
@@ -54,7 +54,7 @@ public class CreateSamplesTest {
     @Test
     public void createSampleCast(){
         // cast needs media to be able to be created, im unsure if this is the safest way to do it
-        Media media = CreateSamples.media("tm1300");
+        Media media = CreateSamples.media().getFirst();
         Person person = CreateSamples.person();
         Cast cast = CreateSamples.cast(media, person);
 

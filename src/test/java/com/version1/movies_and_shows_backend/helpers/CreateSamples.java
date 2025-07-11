@@ -13,7 +13,10 @@ public class CreateSamples {
                 new Genre(2, "drama"),
                 new Genre(3, "family"),
                 new Genre(4, "music"),
-                new Genre(5, "animation")
+                new Genre(5, "animation"),
+                new Genre(6, "scifi"),
+                new Genre(7, "action"),
+                new Genre(8, "fantasy")
         );
     }
 
@@ -26,11 +29,12 @@ public class CreateSamples {
     {
         return List.of(new Site(1, "Apple"));
     }
-    public static Media media(String id) {
+    public static List<Media> media() {
 
 
-        return new Media(
-                id,
+        return List.of(
+                new Media(
+                "tm1300",
                 "A Charlie Brown Christmas",
                 "MOVIE",
                 "When Charlie Brown complains about the overwhelming materialism that he sees amongst everyone during...",
@@ -46,7 +50,26 @@ public class CreateSamples {
                 10.848,
                 7.688,
                 sites()
-        );
+        ),
+        new Media(
+                "ts21223",
+                "Pokémon",
+                "SHOW",
+                "Join Ash accompanied by his partner Pikachu, as he travels through many regions, meets new friends and faces new challenges on his quest to become a Pokémon Master.",
+                1997,
+                "TV-Y7",
+                22,
+                List.of(genres().get(2),genres().get(0), genres().get(5),genres().get(7),genres().get(6),genres().get(4)),
+                List.of(new ProductionCountry("JP")),
+                25,
+                "tt1306685",
+                7.4,
+                224,
+                534.831,
+                7.7,
+                List.of(new Site("Netflix"))
+
+        ));
     }
 
     public static Person person(){

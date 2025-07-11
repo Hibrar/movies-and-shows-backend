@@ -14,6 +14,6 @@ public interface MediaRepository extends JpaRepository<Media, String> {
 
     List<Media> findBySite(String site);
 
-    Optional<Media> findByName(String name);
+    Optional<Media> findByTitle(String title);
 
 }

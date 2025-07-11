@@ -23,7 +23,7 @@ public class MediaService {
 
     public List<Media> getBySite(String site) { return mediaRepository.findBySite(site);}
 
-    public Media getByName(String name) { return mediaRepository.findByName(name).orElse(null);}
+    public Media getByTitle(String name) { return mediaRepository.findByTitle(name).orElse(null);}
 
     // getByType
     // getByYear
