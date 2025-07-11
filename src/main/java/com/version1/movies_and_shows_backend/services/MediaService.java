@@ -19,11 +19,11 @@ public class MediaService {
 
     public List<Media> getAllMedia() { return mediaRepository.findAll();}
 
-    public List<Media> getByGenre(String genre) { return mediaRepository.findByGenre(genre);}
+    public List<Media> getByGenre(String genre) { return mediaRepository.findByGenres_NameIgnoreCase(genre);}
 
-    public List<Media> getBySite(String site) { return mediaRepository.findBySite(site);}
+    public List<Media> getBySite(String site) { return mediaRepository.findBySites_NameIgnoreCase(site);}
 
-    public Media getByName(String name) { return mediaRepository.findByName(name).orElse(null);}
+    public Media getByTitle(String title) { return mediaRepository.findByTitle(title).orElse(null);}
 
     // getByType
     // getByYear

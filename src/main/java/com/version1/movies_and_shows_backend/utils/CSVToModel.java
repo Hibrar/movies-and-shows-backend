@@ -79,7 +79,7 @@ public class CSVToModel {
         media.setAgeCert(row[5]);
         media.setRuntime(parseInteger(row[6]));
         // Skip genres (7) and production countries (8)
-        media.setSeasons(parseInteger(row[9]));
+        media.setSeasons(parseDouble(row[9]));
         media.setImdbId(row[10]);
         media.setImdbScore(parseDouble(row[11]));
         media.setImdbVotes(parseDouble(row[12]));

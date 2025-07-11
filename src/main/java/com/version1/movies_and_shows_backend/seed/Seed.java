@@ -4,6 +4,7 @@ import com.opencsv.CSVReader;
 import com.version1.movies_and_shows_backend.models.*;
 import com.version1.movies_and_shows_backend.repositories.*;
 import com.version1.movies_and_shows_backend.utils.CSVToModel;
+import jakarta.persistence.EntityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,19 +33,29 @@ public class Seed {
     @Autowired
     private MediaRepository mediaRepository;
 
+    @Autowired
+    private PersonRepository personRepository;
+
+    @Autowired
+    private CastRepository castRepository;
+
+//    @Autowired
+//    private EntityManager entityManager;
+
     Path getCSVPath(String site) {
         return Paths.get("").toAbsolutePath().resolve("data/" + site);
     }
 
     public void seedData() {
         String siteName = "netflix";
-        String filePath = getCSVPath(siteName) + "/titles.csv";
-
+        Path filePath = getCSVPath(siteName);
         Site site = seedSite(siteName);
-        List<String[]> csvRows = readCSV(filePath);
 
-        Set<Genre> genres = extractGenres(csvRows);
-        Set<ProductionCountry> countries = extractCountries(csvRows);
+        // MEDIA
+        List<String[]> titlesCsvRows = readCSV(filePath + "/titles.csv");
+
+        Set<Genre> genres = extractGenres(titlesCsvRows);
+        Set<ProductionCountry> countries = extractCountries(titlesCsvRows);
 
         genreRepository.saveAll(new ArrayList<>(genres));
         productionCountryRepository.saveAll(new ArrayList<>(countries));
@@ -52,8 +63,57 @@ public class Seed {
         Map<String, Genre> genreMap = buildGenreMap();
         Map<String, ProductionCountry> productionCountryMap = buildCountryMap();
 
-        List<Media> mediaList = buildMediaList(csvRows, site, genreMap, productionCountryMap);
+        List<Media> mediaList = buildMediaList(titlesCsvRows, site, genreMap, productionCountryMap);
+
         mediaRepository.saveAll(mediaList);
+
+
+        // CREDITS
+        List<String[]> creditsCsvRows = readCSV(filePath + "/credits.csv");
+        List<Person> personList = new ArrayList<>();
+        List<Cast> castList = new ArrayList<>();
+
+        Map<String, Person> personMap = new HashMap<>();
+        Map<String, Media> mediaMap = mediaList.stream()
+                .collect(Collectors.toMap(Media::getId, media -> media));
+
+
+        for (String[] row : creditsCsvRows) {
+
+            String personId = row[0];
+            String mediaId = row[1];
+            String name = row[2];
+            String character = row[3];
+            String role = row[4];
+
+            // Get or create Person
+            Person person = personMap.get(personId);
+            if (person == null) {
+                person = new Person(parseInteger(personId), name);
+                personMap.put(personId, person);
+                personList.add(person);
+            }
+
+            // Get Media
+            Media media = mediaMap.get(mediaId);
+
+
+            // Create Cast
+            Cast cast = new Cast(media, person, character, role);
+            castList.add(cast);
+
+            // Add Cast to Media
+            media.getCast().add(cast);
+        }
+
+
+        personRepository.saveAll(personList);
+        System.out.println("Seeding castlist");
+        castRepository.saveAll(castList);
+        System.out.println("Finished cast");
+        mediaRepository.saveAll(mediaList);
+        System.out.println("Finished media again");
+
     }
 
     Site seedSite(String siteName) {
@@ -109,5 +169,13 @@ public class Seed {
             logger.error("Failed to read CSV file: {}", file, e);
         }
         return rows;
+    }
+
+    private static Integer parseInteger(String value) {
+        try {
+            return (value == null || value.isEmpty()) ? 0 : Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 }

@@ -32,7 +32,7 @@ public class Media {
     @ManyToMany
     private List<ProductionCountry> productionCountries;
     @Column
-    private int seasons;
+    private double seasons;
     @Column
     private String imdbId;
     @Column
@@ -54,7 +54,7 @@ public class Media {
     }
 
 
-    public Media(String id, String title, String type, String description, int releaseYear, String ageCert, int runtime, List<Genre> genres, List<ProductionCountry> productionCountries, int seasons, String imdbId, double imdbScore, int imdbVotes, double tmdbPopularity, double tmdbScore, List<Site> sites) {
+    public Media(String id, String title, String type, String description, int releaseYear, String ageCert, int runtime, List<Genre> genres, List<ProductionCountry> productionCountries, double seasons, String imdbId, double imdbScore, int imdbVotes, double tmdbPopularity, double tmdbScore, List<Site> sites) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -148,11 +148,11 @@ public class Media {
         this.productionCountries = productionCountries;
     }
 
-    public int getSeasons() {
+    public double getSeasons() {
         return seasons;
     }
 
-    public void setSeasons(int seasons) {
+    public void setSeasons(double seasons) {
         this.seasons = seasons;
     }
 
