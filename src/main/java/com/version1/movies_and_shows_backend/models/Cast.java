@@ -20,15 +20,16 @@ public class Cast {
     @JoinColumn(name = "person_id")
     private Person person;
 
+    @Column(name = "character", length = 400)
     private String character;
     private String role;
 
-    public Cast(Media media, Person person, String character, String role, int personId, String mediaId) {
+    public Cast(Media media, Person person, String character, String role) {
         this.media = media;
         this.person = person;
         this.character = character;
         this.role = role;
-        this.id= new CastId(personId,mediaId);
+        this.id= new CastId(person.getId(),media.getId());
     }
 
     public Cast() {

@@ -57,11 +57,11 @@ public class MediaServiceTest {
     @Test
     public void getByGenreTest(){
         List<Media> medias = List.of(media);
-        when(mediaRepository.findByGenre("comedy")).thenReturn(medias);
+        when(mediaRepository.findByGenres_NameIgnoreCase("comedy")).thenReturn(medias);
         List<Media> result = mediaService.getByGenre("comedy");
         assertEquals(result, medias);
 
-        when(mediaRepository.findByGenre("drama")).thenReturn(medias);
+        when(mediaRepository.findByGenres_NameIgnoreCase("drama")).thenReturn(medias);
         result = mediaService.getByGenre("drama");
         assertEquals(result, medias);
 
@@ -81,7 +81,7 @@ public class MediaServiceTest {
     public void getBySiteTest()
     {
         List<Media> medias = List.of(media);
-        when(mediaRepository.findBySite("Apple")).thenReturn(medias);
+        when(mediaRepository.findBySites_NameIgnoreCase("Apple")).thenReturn(medias);
         List<Media> result = mediaService.getBySite("Apple");
         assertEquals(result, medias);
 
@@ -100,18 +100,18 @@ public class MediaServiceTest {
 
 
     @Test
-    public  void getByNameTest()
+    public  void getByTitleTest()
     {
-        when(mediaRepository.findByName("A Charlie Brown Christmas")).thenReturn(Optional.of(media));
+        when(mediaRepository.findByTitle("A Charlie Brown Christmas")).thenReturn(Optional.of(media));
 
-        Media result = mediaService.getByName("A Charlie Brown Christmas");
+        Media result = mediaService.getByTitle("A Charlie Brown Christmas");
         assertEquals(result, media);
     }
 
     @Test
-    public void getByNameNotFoundTest()
+    public void getByTitleNotFoundTest()
     {
-        Media result = mediaService.getByName("Boss Baby Back In Business");
+        Media result = mediaService.getByTitle("Boss Baby Back In Business");
         assertNull(result);
     }
 
