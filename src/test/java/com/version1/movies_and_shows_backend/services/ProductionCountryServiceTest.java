@@ -23,7 +23,7 @@ public class ProductionCountryServiceTest {
     @InjectMocks
     private  ProductionCountryService productionCountryService;
 
-    private List<ProductionCountry> productionCountries = CreateSamples.productionCountries();
+    final List<ProductionCountry> productionCountries = CreateSamples.productionCountries();
 
     @Test
     public void getAllProductionCountryTest()

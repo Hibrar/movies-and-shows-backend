@@ -24,7 +24,7 @@ public class GenreServiceTest {
     @InjectMocks
     private GenreService  genreService;
 
-    private List<Genre> genres = CreateSamples.genres();
+    final List<Genre> genres = CreateSamples.genres();
 
     @Test
     public void getAllGenresTest()

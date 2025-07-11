@@ -25,8 +25,8 @@ public class PersonServiceTest {
     @InjectMocks
     private PersonService personService;
 
-    private Person person = CreateSamples.person();
-    private List<Person> people = List.of(person);
+    final Person person = CreateSamples.person();
+    final List<Person> people = List.of(person);
     @Test
     public void getAllPeopleTest()
     {

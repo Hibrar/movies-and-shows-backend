@@ -28,11 +28,11 @@ public class CastServiceTest {
     @InjectMocks
     private  CastService castService;
 
-    private Person person = CreateSamples.person();
-    private Media media = CreateSamples.media("tm1300");
-    private Cast cast = CreateSamples.cast(media,person);
-    private CastId castId = new CastId(person.getId(),media.getId());
-    private List<Cast> castList = List.of(cast);
+    final Person person = CreateSamples.person();
+    final Media media = CreateSamples.media("tm1300");
+    final Cast cast = CreateSamples.cast(media,person);
+    final CastId castId = new CastId(person.getId(),media.getId());
+    final List<Cast> castList = List.of(cast);
 
     @Test
     public void getCastByIdTest()

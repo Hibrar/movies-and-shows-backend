@@ -26,8 +26,8 @@ public class MediaServiceTest {
     @InjectMocks
     private MediaService mediaService;
 
-    public String id = "tm1300";
-    public Media media = CreateSamples.media(id);
+    final String id = "tm1300";
+    final Media media = CreateSamples.media(id);
     @Test
     public void getMediaByIdTest() {
 
