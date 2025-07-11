@@ -1,9 +1,12 @@
 package com.version1.movies_and_shows_backend.models;
 
+import jakarta.persistence.Embeddable;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 // Defining the composite primary key for the cast table
+@Embeddable
 public class CastId implements Serializable {
     private int personId;
     private String mediaId;

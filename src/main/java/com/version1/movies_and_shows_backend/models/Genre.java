@@ -43,6 +43,11 @@ public class Genre {
     }
 
     @Override
+    public String toString() {
+        return String.format("{id: %d, name: %s }", getId(), getName());
+    }
+
+    @Override
     public boolean equals(Object o)
     {
         if (this == o) return true;

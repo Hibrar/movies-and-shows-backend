@@ -9,6 +9,7 @@ public class Cast {
     @EmbeddedId
     private CastId id;
 
+
     @ManyToOne
     @MapsId("mediaId")
     @JoinColumn(name = "media_id")
@@ -72,4 +73,5 @@ public class Cast {
     public void setId(CastId id) {
         this.id = id;
     }
+
 }
