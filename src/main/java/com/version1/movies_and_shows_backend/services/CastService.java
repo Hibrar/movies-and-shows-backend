@@ -27,9 +27,9 @@ public class CastService {
     public List<Cast> getByPerson(Person person) { return castRepository.findByPerson(person);}
 
     // might be list
-    public Cast getByCharacter(String character) { return castRepository.findByCharacter(character).orElse(null);}
+    public Cast getByCharacter(String character) { return castRepository.findByCharacterIgnoreCase(character).orElse(null);}
 
-    public List<Cast> getByRole (String role) { return castRepository.findByRole(role);}
+    public List<Cast> getByRole (String role) { return castRepository.findByRoleIgnoreCase(role);}
 
 
     //save...

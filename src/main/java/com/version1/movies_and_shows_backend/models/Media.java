@@ -16,8 +16,7 @@ public class Media {
     private String title;
     @Column
     private String type;
-    @Column
-    @Lob
+    @Column(columnDefinition = "CLOB")
     private String description;
     @Column
     private int releaseYear;
@@ -25,11 +24,21 @@ public class Media {
     private String ageCert;
     @Column
     private int runtime;
-    @Column
-    @ManyToMany
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "media_genre",
+            joinColumns = @JoinColumn(name = "media_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
     private List<Genre> genres;
-    @Column
-    @ManyToMany
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "media_production_countries",
+            joinColumns = @JoinColumn(name = "media_id"),
+            inverseJoinColumns = @JoinColumn(name = "production_country_id")
+    )
     private List<ProductionCountry> productionCountries;
     @Column
     private double seasons;
@@ -43,10 +52,15 @@ public class Media {
     private double tmdbPopularity;
     @Column
     private double tmdbScore;
-    @Column
-    @ManyToMany
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "media_sites",
+            joinColumns = @JoinColumn(name = "media_id"),
+            inverseJoinColumns = @JoinColumn(name = "site_id")
+    )
     private List<Site> sites;
-    @Column
+
     @OneToMany(mappedBy = "media")
     private List<Cast> cast;
 
