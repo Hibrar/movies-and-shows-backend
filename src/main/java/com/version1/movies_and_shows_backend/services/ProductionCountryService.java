@@ -14,5 +14,8 @@ public class ProductionCountryService {
 
     public List<ProductionCountry> getAllProductionCountries(){ return productionCountryRepository.findAll();}
 
+    public ProductionCountry getByName(String name) {
+        return productionCountryRepository.findByNameIgnoreCase(name).orElse(null);
+    }
     // save...
 }

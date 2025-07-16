@@ -16,6 +16,10 @@ public class GenreService {
         return genreRepository.findAll();
     }
 
+    public Genre getByName(String name) {
+        return genreRepository.findByNameIgnoreCase(name).orElse(null);
+    }
+
 
     // save...
 }

@@ -14,6 +14,6 @@ public class PersonService {
 
     public List<Person> getAllPeople() { return  personRepository.findAll();}
 
-    public  Person getByName(String name) { return personRepository.findByName(name).orElse(null);}
+    public  Person getByName(String name) { return personRepository.findByNameIgnoreCase(name).orElse(null);}
 
 }
