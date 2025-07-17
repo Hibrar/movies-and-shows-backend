@@ -29,7 +29,7 @@ public class CreateSamplesTest {
 
         // Check genres
         List<Genre> genres = media.getGenres();
-        assertEquals(5, genres.size());
+        assertEquals(8, genres.size());
         assertTrue(genres.stream().anyMatch(g -> g.getName().equals("comedy")));
 
         // Check countries

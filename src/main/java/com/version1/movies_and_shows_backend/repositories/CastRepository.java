@@ -18,8 +18,8 @@ public interface CastRepository extends JpaRepository<Cast, CastId> {
 
     List<Cast> findByPerson (Person person);
 
-    Optional<Cast> findByCharacter(String Character);
+    Optional<Cast> findByCharacterIgnoreCase(String Character);
 
-    List<Cast> findByRole(String role);
+    List<Cast> findByRoleIgnoreCase(String role);
 
 }

@@ -87,7 +87,7 @@ public class CastServiceTest {
     @Test
     public void getByCharacterTest()
     {
-        when(castRepository.findByCharacter("Charlie Brown")).thenReturn(Optional.of(cast));
+        when(castRepository.findByCharacterIgnoreCase("Charlie Brown")).thenReturn(Optional.of(cast));
         Cast result = castService.getByCharacter("Charlie Brown");
 
         assertEquals(cast, result);
@@ -104,7 +104,7 @@ public class CastServiceTest {
     @Test
     public void getByRoleTest()
     {
-        when(castRepository.findByRole("Actor")).thenReturn(castList);
+        when(castRepository.findByRoleIgnoreCase("Actor")).thenReturn(castList);
         List<Cast> result = castService.getByRole("Actor");
 
         assertEquals(castList, result);

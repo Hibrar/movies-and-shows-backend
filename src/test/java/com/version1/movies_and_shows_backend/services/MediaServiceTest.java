@@ -102,7 +102,7 @@ public class MediaServiceTest {
     @Test
     public  void getByTitleTest()
     {
-        when(mediaRepository.findByTitle("A Charlie Brown Christmas")).thenReturn(Optional.of(media));
+        when(mediaRepository.findByTitleIgnoreCase("A Charlie Brown Christmas")).thenReturn(Optional.of(media));
 
         Media result = mediaService.getByTitle("A Charlie Brown Christmas");
         assertEquals(result, media);

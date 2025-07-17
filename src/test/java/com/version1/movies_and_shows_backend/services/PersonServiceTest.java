@@ -40,7 +40,7 @@ public class PersonServiceTest {
     @Test
     public void getByNameTest()
     {
-        when(personRepository.findByName("Peter Robbins")).thenReturn(Optional.of(person));
+        when(personRepository.findByNameIgnoreCase("Peter Robbins")).thenReturn(Optional.of(person));
         Person result = personService.getByName("Peter Robbins");
         assertEquals(result, person);
 

@@ -15,6 +15,13 @@ public class SiteService {
 
     public List<Site> getAllSites(){ return siteRepository.findAll();}
 
-    // save...
+    public Site getByName(String name) {
+        return siteRepository.findByNameIgnoreCase(name).orElse(null);
+    }
+    public Site save(Site site) {
+        return siteRepository.save(site);
+    }
+
+
 
 }
