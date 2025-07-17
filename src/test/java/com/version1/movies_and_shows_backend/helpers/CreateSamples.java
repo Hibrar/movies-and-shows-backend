@@ -71,7 +71,26 @@ public class CreateSamples {
 
         ));
     }
-
+    public static Media singleMedia() {
+        return new Media(
+                "tm1300",
+                "A Charlie Brown Christmas",
+                "MOVIE",
+                "When Charlie Brown complains about the overwhelming materialism that he sees amongst everyone during...",
+                1965,
+                "G",
+                25,
+                genres(),
+                productionCountries(),
+                0,
+                "tt0059026",
+                8.3,
+                40328,
+                10.848,
+                7.688,
+                sites()
+        );
+    }
     public static Person person(){
         return new Person(1,"Peter Robbins");
     }
@@ -81,9 +100,7 @@ public class CreateSamples {
                 media,
                 person,
                 "Charlie Brown",
-                "Actor",
-                person.getId(),
-                media.getId()
+                "Actor"
         );
     }
 }

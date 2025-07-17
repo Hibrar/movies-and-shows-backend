@@ -41,26 +41,26 @@ public class CSVToModel {
 
     public static List<Genre> extractGenres(String[] row) {
         List<Genre> genres = new ArrayList<>();
-            String rawString = row[7];
-            String[] genreArray = rawString.replaceAll("[\\[\\]]", "").split(",");
-            for (String genre:genreArray) {
-                String cleanGenre = genre.trim().replaceAll("['\"]", "");
-                if(!cleanGenre.isEmpty()) {
-                    genres.add(new Genre(cleanGenre));
-                }
+        String rawString = row[7];
+        String[] genreArray = rawString.replaceAll("[\\[\\]]", "").split(",");
+        for (String genre : genreArray) {
+            String cleanGenre = genre.trim().replaceAll("['\"]", "");
+            if (!cleanGenre.isEmpty()) {
+                genres.add(new Genre(cleanGenre));
             }
+        }
 
         return genres;
     }
 
 
-    public static List<ProductionCountry> extractProductionCountries(String[] row){
+    public static List<ProductionCountry> extractProductionCountries(String[] row) {
         List<ProductionCountry> productionCountries = new ArrayList<>();
         String rawString = row[8];
         String[] countriesArray = rawString.replaceAll("[\\[\\]]", "").split(",");
-        for (String country:countriesArray) {
+        for (String country : countriesArray) {
             String cleanString = country.trim().replaceAll("['\"]", "");
-            if(!cleanString.isEmpty()) {
+            if (!cleanString.isEmpty()) {
                 productionCountries.add(new ProductionCountry(cleanString));
             }
         }
@@ -69,7 +69,7 @@ public class CSVToModel {
     }
 
     // maybe pass in which site it is as a variable so can add to media
-    public static Media extractMedia(String[] row){
+    public static Media extractMedia(String[] row) {
         Media media = new Media();
         media.setId(row[0]);
         media.setTitle(row[1]);
@@ -89,13 +89,12 @@ public class CSVToModel {
         return media;
     }
 
-    public static void extractPerson(String row){
+    public static void extractPerson(String row) {
         // loops through row
         // adds to list if doesnt exist
     }
 
-    public static void extractCast()
-    {
+    public static void extractCast() {
         // for each column
         // make new cast
         // check through list of media for the matching ids, add media to cast
@@ -108,14 +107,14 @@ public class CSVToModel {
 
     }
 
-    public static void duplicateHandler(){
+    public static void duplicateHandler() {
         // after all 5 sites done, deals with duplicates
         //  ( all sites on duplicates need to be added to list, data might be different between the
         //  duplicates, so need to figure out how to handle that)
     }
 
     // brings it all together
-    public static void placeHolderName(){
+    public static void placeHolderName() {
         // loops through all 5 title files
         // calls the methods
         // loops through all 5 credit files
@@ -138,7 +137,7 @@ public class CSVToModel {
 
     private static Double parseDouble(String value) {
         try {
-            return (value == null || value.isEmpty()) ? 0.0  : Double.parseDouble(value);
+            return (value == null || value.isEmpty()) ? 0.0 : Double.parseDouble(value);
         } catch (NumberFormatException e) {
             return 0.0;
         }

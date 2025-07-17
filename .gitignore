@@ -6,6 +6,7 @@ target/
 .env
 htmlReport/
 movies-and-shows-backend.log
+movies-and-shows-backend-tests.log
 ### STS ###
 .apt_generated
 .classpath
