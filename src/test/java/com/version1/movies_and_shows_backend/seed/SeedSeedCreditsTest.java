@@ -85,7 +85,7 @@ public class SeedSeedCreditsTest {
         seed.seedCredits(sites, seededMedia);
 
         // Act
-        Optional<Person> stallone = personRepository.findByName("Sylvester Stallone");
+        Optional<Person> stallone = personRepository.findByNameIgnoreCase("Sylvester Stallone");
         assertTrue(stallone.isPresent(), "Sylvester Stallone should be saved");
 
         List<Cast> stalloneCast = castRepository.findByPerson(stallone.get());
