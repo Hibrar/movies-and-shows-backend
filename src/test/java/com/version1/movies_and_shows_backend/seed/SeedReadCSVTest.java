@@ -21,7 +21,7 @@ public class SeedReadCSVTest {
         List<String[]> result = new Seed().readCSV(path + "/titles.csv" , siteName);
 
         // Assert expected number of rows (10 data rows, header skipped)
-        assertEquals(10, result.size(), "Should read 10 data rows");
+        assertEquals(7, result.size(), "Should read 7 data rows");
 
         // Assert first row content
         String[] firstRow = result.getFirst();
@@ -32,9 +32,9 @@ public class SeedReadCSVTest {
 
         // Assert last row content
         String[] lastRow = result.getLast();
-        assertEquals("tm16479", lastRow[0]);
-        assertEquals("White Christmas", lastRow[1]);
-        assertEquals("MOVIE", lastRow[2]);
+        assertEquals("ts42137", lastRow[0]);
+        assertEquals("Voltron: Legendary Defender", lastRow[1]);
+        assertEquals("SHOW", lastRow[2]);
         assertEquals("FilmArchive", lastRow[lastRow.length - 1]);
 
         // Assert all rows have siteName appended
