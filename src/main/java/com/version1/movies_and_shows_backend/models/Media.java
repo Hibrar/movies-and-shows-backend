@@ -17,7 +17,8 @@ public class Media {
     private String title;
     @Column
     private String type;
-    @Column(columnDefinition = "CLOB")
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String description;
     @Column
     private int releaseYear;
