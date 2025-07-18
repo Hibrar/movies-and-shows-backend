@@ -31,7 +31,7 @@ public class GenreServiceTest {
     {
         when(genreRepository.findAll()).thenReturn(genres);
 
-        List<Genre> result = genreService.getAllGenre();
+        List<Genre> result = genreService.getAllGenres();
 
         assertEquals(genres,result);
     }
@@ -40,7 +40,7 @@ public class GenreServiceTest {
     public void getAllGenresNotFoundTest()
     {
 
-        List<Genre> result = genreService.getAllGenre();
+        List<Genre> result = genreService.getAllGenres();
 
         assertEquals(new ArrayList<>(),result);
     }
