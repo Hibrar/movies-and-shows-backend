@@ -29,8 +29,8 @@ public class CreateSamplesTest {
 
         // Check genres
         List<Genre> genres = media.getGenres();
-        assertEquals(8, genres.size());
-        assertTrue(genres.stream().anyMatch(g -> g.getName().equals("comedy")));
+        assertEquals(3, genres.size());
+        assertTrue(genres.stream().anyMatch(g -> g.getName().equals("drama")));
 
         // Check countries
         List<ProductionCountry> countries = media.getProductionCountries();

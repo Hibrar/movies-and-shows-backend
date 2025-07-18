@@ -50,7 +50,11 @@ public class CreateSamples {
                         1965,
                         "G",
                         25,
-                        genres(),
+                        List.of(
+                                genreList.get(2), // family
+                                genreList.get(1), // drama
+                                genreList.get(3) // music
+                        ),
                         List.of(productionCountryList.get(0)), // US
                         0,
                         "tt0059026",
