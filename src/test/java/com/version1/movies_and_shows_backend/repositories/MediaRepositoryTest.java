@@ -141,13 +141,13 @@ public class MediaRepositoryTest {
 
     @Test
     public void findByTitleTest() {
-        Optional<Media> result = mediaRepository.findByTitleIgnoreCase("A Charlie Brown Christmas");
+        Optional<Media> result = mediaRepository.findFirstByTitleIgnoreCase("A Charlie Brown Christmas");
         assertTrue(result.isPresent());
         assertEquals(media.getFirst(), result.get());
     }
     @Test
     public void findByTitleNotFoundTest() {
-        Optional<Media> result = mediaRepository.findByTitleIgnoreCase("Nonexistent Title");
+        Optional<Media> result = mediaRepository.findFirstByTitleIgnoreCase("Nonexistent Title");
         assertTrue(result.isEmpty());
     }
 
@@ -212,7 +212,7 @@ public class MediaRepositoryTest {
         assertTrue(mediaBeforeTest.isPresent());
 
         // Test case-insensitive search
-        Optional<Media> result = mediaRepository.findByTitleIgnoreCase("a charlie brown christmas");
+        Optional<Media> result = mediaRepository.findFirstByTitleIgnoreCase("a charlie brown christmas");
         assertTrue(result.isPresent());
         assertEquals(media.getFirst(), result.get());
     }
