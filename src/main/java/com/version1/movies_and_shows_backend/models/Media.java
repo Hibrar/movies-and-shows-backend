@@ -18,7 +18,8 @@ public class Media {
     @Column
     private String type;
     @Lob
-    @Column(columnDefinition = "TEXT")
+    @Basic(fetch = FetchType.EAGER)
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
     @Column
     private int releaseYear;

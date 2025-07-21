@@ -24,7 +24,7 @@ public class MediaService {
     public List<Media> getBySite(String site) { return mediaRepository.findBySites_NameIgnoreCase(site);}
 
 
-    public Media getByTitle(String title) { return mediaRepository.findByTitleIgnoreCase(title).orElse(null);}
+    public Media getByTitle(String title) { return mediaRepository.findFirstByTitleIgnoreCase(title).orElse(null);}
 
 
     // getByType

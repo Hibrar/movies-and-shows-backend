@@ -14,6 +14,6 @@ public interface MediaRepository extends JpaRepository<Media, String> {
 
     List<Media> findBySites_NameIgnoreCase(String name);
 
-    Optional<Media> findByTitleIgnoreCase(String title);
+    Optional<Media> findFirstByTitleIgnoreCase(String title);
 
 }
