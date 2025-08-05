@@ -18,7 +18,7 @@ public class DemoCIExample {
         if (studentname != null && studentname.equals("John")) {
             result = "Welcome, John!";
         }
-
+        System.out.println("Triggering CodeGuru run...");
         return result;
     }
 }
