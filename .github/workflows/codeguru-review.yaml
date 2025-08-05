@@ -18,7 +18,9 @@ jobs:
           name: ${{ github.repository }}
           source_path: .
           build_path: .
-          s3_bucket: codeguru-reviewer-hibrar-cicd
+          s3_bucket: codeguru-reviewer-hibrar-cicd  # ✅ must start with 'codeguru-reviewer-'
         env:
           AWS_REGION: eu-west-2
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
