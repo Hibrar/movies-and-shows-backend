@@ -15,7 +15,7 @@ public class DemoCIExample {
 
     public String getInfo() {
         String result = null;
-        if (studentname.equals("John"))
+        if (studentname != null && studentname.equals("John")) {
             result = "Welcome, John!";
         }
         return result;
