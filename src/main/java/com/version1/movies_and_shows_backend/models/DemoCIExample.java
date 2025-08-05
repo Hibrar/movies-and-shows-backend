@@ -18,6 +18,7 @@ public class DemoCIExample {
         if (studentname.equals("John"))
             result = "Welcome, John!";
         }
+        System.out.println("CodeGuru trigger test");
         return result;
     }
 }
