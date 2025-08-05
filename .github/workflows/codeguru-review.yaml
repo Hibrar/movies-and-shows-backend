@@ -18,7 +18,7 @@ jobs:
           name: ${{ github.repository }}
           source_path: .
           build_path: .
-          s3_bucket: codeguru-review-demo-cicd
+          s3_bucket: codeguru-reviewer-hibrar-cicd
         env:
           AWS_REGION: eu-west-2
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
