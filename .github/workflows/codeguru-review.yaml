@@ -1,27 +1,24 @@
-name: Amazon CodeGuru Reviewer
+name: codeguru-review
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   codeguru-review:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      pull-requests: write
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Run Amazon CodeGuru Reviewer
+      - name: Run CodeGuru Reviewer
         uses: aws-actions/codeguru-reviewer@main
         with:
+          name: ${{ github.repository }}
+          source_path: .
           build_path: .
+          s3_bucket: codeguru-review-demo-cicd
         env:
+          AWS_REGION: eu-west-2
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          AWS_REGION: eu-west-1  # Change to your region if needed
