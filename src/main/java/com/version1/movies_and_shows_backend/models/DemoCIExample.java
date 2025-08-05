@@ -18,6 +18,7 @@ public class DemoCIExample {
         if (studentname != null && studentname.equals("John")) {
             result = "Welcome, John!";
         }
+
         return result;
     }
 }
